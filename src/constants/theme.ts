@@ -18,10 +18,10 @@ export const lightTheme: Theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#1e90ff',
-    background: '#ffffff',
-    card: '#f5f5f5',
+    background: '#f8f9fa',
+    card: '#ffffff',
     text: '#333333',
-    border: '#cccccc',
+    border: '#e9ecef',
     notification: '#ff6347',
   },
 };

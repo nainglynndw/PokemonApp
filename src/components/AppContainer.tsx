@@ -9,7 +9,6 @@ const AppContainer: FC<ViewProps> = Props => {
     container: {
       width: '100%',
       flex: 1,
-      justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: colors.background,
       padding: Size.s16,

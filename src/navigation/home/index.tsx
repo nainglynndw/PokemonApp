@@ -6,7 +6,7 @@ const HomeStack = createNativeStackNavigator();
 
 const HomeNavigator = () => {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
       <HomeStack.Screen name="PokemonList" component={PokemonList} />
       <HomeStack.Screen name="PokemonDetail" component={PokemonDetail} />
     </HomeStack.Navigator>
