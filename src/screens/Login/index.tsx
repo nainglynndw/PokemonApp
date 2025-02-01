@@ -27,7 +27,7 @@ const Login = () => {
         Alert.alert('Error', 'Incorrect user name or password');
       }
       setLoading(false);
-    }, 2000);
+    }, 1500);
   }, [password, setAuth, setLoading, userName]);
 
   return (

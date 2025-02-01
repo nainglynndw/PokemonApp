@@ -1,14 +1,18 @@
-import {useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
 import {fetchPokemonDetailsByName, fetchPokemonList} from './pokemonApi';
 
-export const usePokemonListQuery = (offset: number) => {
-  return useQuery({
-    queryKey: ['pokemonList', offset],
-    queryFn: () => fetchPokemonList(offset),
+export const usePokemonListQuery = () => {
+  return useInfiniteQuery({
+    queryKey: ['pokemonList'],
+    queryFn: async ({pageParam}: {pageParam: number}) =>
+      fetchPokemonList(pageParam),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) =>
+      lastPage.hasNext ? allPages.length * 20 : undefined,
   });
 };
 
-export const usePokemonDetailsQuery = (name: string) => {
+export const usePokemonDetailsQuery = (name: string | number) => {
   return useQuery({
     queryKey: ['pokemonDetails', name],
     queryFn: () => fetchPokemonDetailsByName(name),

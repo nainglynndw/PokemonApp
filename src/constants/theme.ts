@@ -6,7 +6,7 @@ export const darkTheme: Theme = {
     ...DarkTheme.colors,
     primary: '#1591b4',
     background: '#0f1925',
-    card: '#1a2735',
+    card: '#ffffff',
     text: '#c0d8e8',
     border: '#1f3547',
     notification: '#27a3a9',
