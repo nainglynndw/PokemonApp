@@ -2947,6 +2947,7 @@ __metadata:
     react: 18.3.1
     react-content-loader: ^7.0.2
     react-native: 0.77.0
+    react-native-image-picker: ^8.0.0
     react-native-mmkv: ^3.2.0
     react-native-safe-area-context: ^5.1.0
     react-native-screens: ^4.6.0
@@ -8004,6 +8005,16 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
+  languageName: node
+  linkType: hard
+
+"react-native-image-picker@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "react-native-image-picker@npm:8.0.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: d1b90219f4ff77d700307bd3dfc7475463dfe5c1d9dc4da365535075df4baf44d0c411cf9f19a3f83226830ada18ad3728abc2b14f67c77b1f5e146ebbb0bdec
   languageName: node
   linkType: hard
 

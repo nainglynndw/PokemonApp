@@ -42,6 +42,10 @@ const PokemonList: FC<Props> = Props => {
     [Props.navigation],
   );
 
+  const onPressAdd = useCallback(() => {
+    Props.navigation.navigate('AddNewPokemon');
+  }, [Props.navigation]);
+
   const renderItem = useCallback(
     ({item}: {item: TPokemons}) => {
       return (
@@ -80,7 +84,7 @@ const PokemonList: FC<Props> = Props => {
             isFetching ? <ActivityIndicator size="large" /> : null
           }
         />
-        <TouchableOpacity style={styles.addNewBtn}>
+        <TouchableOpacity style={styles.addNewBtn} onPress={onPressAdd}>
           <AppText style={styles.plus}>+</AppText>
         </TouchableOpacity>
       </AppContainer>

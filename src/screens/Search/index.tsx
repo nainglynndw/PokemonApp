@@ -1,12 +1,12 @@
 import React, {useState, useEffect, useRef, useCallback, type FC} from 'react';
-import {View, Text, TextInput, StyleSheet, Image, Button} from 'react-native';
+import {View, TextInput, Image} from 'react-native';
 import {usePokemonDetailsQuery} from '../../api/usePokemonApi';
-import {Size} from '../../constants/dimensions';
 import AppError from '../../components/AppError';
 import {AppSkeletonDetailLoading} from '../../components/AppSkeletonLoading';
 import AppText from '../../components/AppText';
-import {generalColors} from '../../constants/theme';
 import type {TUseNavigation} from '../../navigation/RootStackParamList';
+import {useStyle} from './styles';
+import AppButton from '../../components/AppButton';
 
 interface Props {
   navigation: TUseNavigation<'Search'>;
@@ -16,7 +16,7 @@ const Search: FC<Props> = Props => {
   const [pokemonName, setPokemonName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
+  const styles = useStyle();
   const {
     data: pokemonDetails,
     isLoading,
@@ -46,7 +46,7 @@ const Search: FC<Props> = Props => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pokémon Search</Text>
+      <AppText style={styles.title}>Pokémon Search</AppText>
       <TextInput
         style={styles.input}
         placeholder="Enter Pokémon name or ID"
@@ -67,55 +67,23 @@ const Search: FC<Props> = Props => {
             style={styles.pokemonImage}
             source={{uri: pokemonDetails.sprites.front_default}}
           />
-          <AppText>Height: {pokemonDetails.height / 10} m</AppText>
-          <AppText>Weight: {pokemonDetails.weight / 10} kg</AppText>
-          <AppText>Abilities:</AppText>
+          <AppText style={styles.ability}>
+            Height: {pokemonDetails.height / 10} m
+          </AppText>
+          <AppText style={styles.ability}>
+            Weight: {pokemonDetails.weight / 10} kg
+          </AppText>
+          <AppText style={styles.ability}>Abilities:</AppText>
           {pokemonDetails.abilities.map((ability, index) => (
-            <AppText key={index}>{ability.ability.name}</AppText>
+            <AppText style={styles.ability} key={index}>
+              {ability.ability.name}
+            </AppText>
           ))}
-          <Button title="More detail >" onPress={onPressDetail} />
+          <AppButton onPress={onPressDetail} label="More detail >" />
         </View>
       )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: Size.s20,
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: Size.s24,
-    fontWeight: 'bold',
-    marginBottom: Size.s20,
-  },
-  input: {
-    width: '100%',
-    height: Size.s32,
-    borderColor: generalColors.grey,
-    borderWidth: 1,
-    marginBottom: Size.s24,
-    paddingHorizontal: Size.s12,
-  },
-  pokemonDetails: {
-    marginTop: Size.s20,
-    alignItems: 'center',
-  },
-  pokemonName: {
-    fontSize: Size.s20,
-    fontWeight: 'bold',
-  },
-  pokemonImage: {
-    width: Size.s64 * 2,
-    height: Size.s64 * 2,
-    marginVertical: Size.s12,
-  },
-  error: {
-    color: generalColors.red,
-    marginTop: Size.s20,
-  },
-});
 
 export default Search;
