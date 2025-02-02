@@ -6,6 +6,16 @@ This is pokemon app with modern technologies.
 - React navigation@7
 - Theming
 
+![Simulator Screenshot - iPhone 15 Pro - 2025-02-02 at 13 31 30](https://github.com/user-attachments/assets/2d53afc0-35de-4e4b-8164-65dcff7c763e)
+![Simulator Screenshot - iPhone 15 Pro - 2025-02-02 at 13 27 51](https://github.com/user-attachments/assets/5dad7804-69b7-4197-99ae-db50a260f712)
+![Simulator Screenshot - iPhone 15 Pro - 2025-02-02 at 13 28 40](https://github.com/user-attachments/assets/66a84843-0778-4835-a6f0-bb871b073520)
+![Simulator Screenshot - iPhone 15 Pro - 2025-02-02 at 13 28 27](https://github.com/user-attachments/assets/f5cd3fc1-33fa-401d-a022-aa1a0a90cad5)
+![Simulator Screenshot - iPhone 15 Pro - 2025-02-02 at 13 28 47](https://github.com/user-attachments/assets/5ab01568-ad3b-462d-acba-3ad83a728897)
+![Simulator Screenshot - iPhone 15 Pro - 2025-02-02 at 13 29 13](https://github.com/user-attachments/assets/23ec71e9-f960-45d5-94fe-58ce43f4ad4b)
+
+
+
+
 # Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
