@@ -1,4 +1,10 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is pokemon app with modern technologies.
+- Bare react native@0.77
+- Zustand
+- Tanstack query
+- mmkv
+- React navigation@7
+- Theming
 
 # Getting Started
 
