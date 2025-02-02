@@ -3,10 +3,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PokemonList from '../../screens/PokemonList';
 import PokemonDetail from '../../screens/PokemonDetail';
 import type {RootStackParamList} from '../RootStackParamList';
-import Profile from '../../screens/Profile';
-import ProfileHeader from './components/profileHeader';
+import Favourite from '../../screens/Favourite';
+import HeaderRight from './components/HeaderRight';
 import {useTheme} from '@react-navigation/native';
 import AddNewPokemmon from '../../screens/AddNewPokemon';
+import Search from '../../screens/Search';
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,20 +21,21 @@ const HomeNavigator = () => {
       <HomeStack.Screen
         options={({navigation}) => ({
           title: 'Pokomons',
-          headerRight: () => <ProfileHeader navigation={navigation} />,
+          headerStyle: {backgroundColor: colors.primary},
+          headerRight: () => <HeaderRight navigation={navigation} />,
         })}
         name="PokemonList"
         component={PokemonList}
       />
       <HomeStack.Screen
-        options={({navigation}) => ({
-          title: 'Detail',
-          headerRight: () => <ProfileHeader navigation={navigation} />,
-        })}
+        options={{
+          title: 'Details',
+        }}
         name="PokemonDetail"
         component={PokemonDetail}
       />
-      <HomeStack.Screen name="Profile" component={Profile} />
+      <HomeStack.Screen name="Favourite" component={Favourite} />
+      <HomeStack.Screen name="Search" component={Search} />
       <HomeStack.Screen
         options={{title: 'Add New Pokemon'}}
         name="AddNewPokemon"

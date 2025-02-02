@@ -44,12 +44,20 @@ const PokemonDetail: FC<Props> = Props => {
   const statsMap = new Map(
     data.stats.map(stat => [stat.stat.name, stat.base_stat]),
   );
-  const hpStat = statsMap.get('hp');
-  const attackStat = statsMap.get('attack');
-  const defenseStat = statsMap.get('defense');
-  const speedStat = statsMap.get('speed');
-  const specialDefenseStat = statsMap.get('special-defense');
-  const specialAttackStat = statsMap.get('special-attack');
+  const hpStat = statsMap.get('hp') ?? 'Hidden';
+  const attackStat = statsMap.get('attack') ?? 'Hidden';
+  const defenseStat = statsMap.get('defense') ?? 'Hidden';
+  const speedStat = statsMap.get('speed') ?? 'Hidden';
+  const specialDefenseStat = statsMap.get('special-defense') ?? 'Hidden';
+  const specialAttackStat = statsMap.get('special-attack') ?? 'Hidden';
+  const cp =
+    Number(hpStat) +
+    Number(attackStat) +
+    Number(defenseStat) +
+    Number(speedStat) +
+    Number(specialAttackStat) +
+    Number(specialDefenseStat);
+  const cpStat = isNaN(cp) ? 'Hidden' : cp;
 
   const favIcon = isFav
     ? require('../../assets/images/favourite-fill.png')
@@ -100,6 +108,7 @@ const PokemonDetail: FC<Props> = Props => {
           </View>
         </View>
 
+        <AppText style={styles.cpStat}>CP - {cpStat}</AppText>
         {imageUrl && <Image style={styles.image} source={{uri: imageUrl}} />}
         <TouchableOpacity
           disabled={isProcessing}

@@ -2,6 +2,10 @@ import {MMKV} from 'react-native-mmkv';
 
 export const storage = new MMKV();
 
+export const getAllItems = () => {
+  return storage.getAllKeys();
+};
+
 export const getItem = (key: string): string | undefined => {
   return storage.getString(key);
 };

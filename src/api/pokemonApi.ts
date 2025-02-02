@@ -1,3 +1,5 @@
+import {getAllItems} from '../utils/storage';
+
 const API_BASE_URL = 'https://pokeapi.co/api/v2/';
 
 const pokemonListUrl = (offset = 0) =>
@@ -9,10 +11,14 @@ const pokemonDetailByNameUrl = (name: string | number) =>
 const pokemonApiCall = async (endpoints: string) => {
   try {
     const response = await fetch(endpoints);
+    if (!response.ok) {
+      return null;
+    }
     const data = await response.json();
     return data;
   } catch (err) {
     console.error(err);
+    return null;
   }
 };
 
@@ -34,6 +40,7 @@ export type TPokemonDetail = {
   id: number;
   name: string;
   weight: number;
+  height: number;
   sprites: {
     front_default: string;
     other: {
@@ -88,4 +95,32 @@ export const fetchPokemonDetailsByName = async (
   name: string | number,
 ): Promise<TPokemonDetail> => {
   return await pokemonApiCall(pokemonDetailByNameUrl(name));
+};
+
+export const getFavPokemonList = async () => {
+  const allItems = getAllItems();
+  const favPokemonIds = allItems.reduce<string[]>((acc, item) => {
+    if (item.startsWith('fav_')) {
+      acc.push(item.replace('fav_', ''));
+    }
+    return acc;
+  }, []);
+  const pokemonListWithDetails: PokemonListResponse['pokemons'] =
+    await Promise.all(
+      favPokemonIds.map(async name => {
+        const details = await fetchPokemonDetailsByName(name);
+        return {
+          name: name,
+          url: '',
+          sprite:
+            details.sprites.other.home.front_default ??
+            details.sprites.front_default,
+          id: details.id,
+          types: details.types.map(
+            (type: {type: {name: string}}) => type.type.name,
+          ),
+        };
+      }),
+    );
+  return pokemonListWithDetails;
 };

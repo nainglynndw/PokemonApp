@@ -67,6 +67,13 @@ export const useStyle = () => {
         fontSize: Size.s12,
         color: generalColors.black,
       },
+      cpStat: {
+        position: 'absolute',
+        fontWeight: 'bold',
+        color: colors.primary,
+        fontSize: Size.s20,
+        top: Size.s16,
+      },
       favIconContainer: {
         top: Size.s16,
         right: Size.s16,
